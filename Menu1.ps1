@@ -27,38 +27,71 @@ do
      $input = Read-Host "Please make a selection"
      switch ($input)
      {
-           '1' {
-                clear-host
-                write-host "Peanuts are a swell food"
-                ipconfig
+             '1' {
+    "------------------HOSTNAME------------------"
+    clear-host
+    Write-host "Hostname:  " -NoNewline
+    HOSTNAME.exe
+
            } '2' {
-                cls
-                'You chose option #2'
+    clear-host
+    "---------------IPV4 ADDRESSES---------------"
+     (Get-NetIPConfiguration).IPv4Address
+
            } '3' {
-                cls
-                'You chose option #3'
+    clear-host
+    "------------DNS SERVER ADDRESSES------------"
+    Get-NetIPConfiguration | Get-DnsClientServerAddress
+
           } '4' {
+    clear-host
+    "--------------DEFAULT GATEWAY---------------"
+    Get-NetIPConfiguration | Foreach IPv4DefaultGateway
 
           } '5' {
+    clear-host
+    "----------------FREE MEMORY-----------------"
+    ""
+    "System Name     : {0}" -f $freemem.csname
+    "Free Memory (MB): {0}" -f ([math]::round($freemem.FreePhysicalMemory / 1024, 2))
+    "Free Memory (GB): {0}" -f ([math]::round(($freemem.FreePhysicalMemory / 1024 / 1024), 2))
 
           } '6' {
+    clear-host
+    "---------------CURRENT PATH-----------------"
+    ""
+    $env:path
 
           } '7' {
+    clear-host
+    "-------------INSTALLED DRIVERS--------------"
 
           } '8' {
+    clear-host
+    "---------------RUNNING TASKS----------------"
+
 
           } '9' {
+    clear-host
+    "------------ENTER PROCESS TO KILL-----------"
 
           } '10' {
+    clear-host
+      "---------------DISPLAY FILE---------------"
 
           } '11' {
+    clear-host
+    "---------FILE SECURITY INFORMATION----------"
 
           } '12' {
+    clear-host
+    "---------ACTIVE NETWORK CONNECTIONS---------"
 
            } 'q' {
-                return
+    return
            }
      }
      pause
 }
 until ($input -eq 'q')
+clear-Host
