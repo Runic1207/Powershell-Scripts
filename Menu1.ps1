@@ -1,3 +1,5 @@
+# This script was written by Michael Heeney and ***** ***** for Scripting for Network Administrators for Baker College of Jackson.
+# First build date: 9/14/18
 function Show-Menu
 {
      param (
@@ -104,4 +106,3 @@ do
      pause
 }
 until ($input -eq 'q')
-clear-Host
