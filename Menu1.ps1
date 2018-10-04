@@ -1,12 +1,12 @@
-# This script was written by Michael Heeney and ***** ***** for Scripting for Network Administrators for Baker College of Jackson.
+﻿# This script was written by Michael Heeney and ***** ***** for Scripting for Network Administrators for Baker College of Jackson.
 # First build date: 9/14/18
 #--------------------------------------------------------------------------------------------------------------------------------
 
 #Sets background and font color of text
-$backgroundColor = "DarkMagenta"
+$backgroundColor = "Black"
 $AltbackgroundColor = "Black"
-$host.UI.RawUI.ForegroundColor = "White"
-$host.UI.RawUI.BackgroundColor = "$backgroundColor"
+$host.UI.RawUI.ForegroundColor = "Green"
+$host.UI.RawUI.BackgroundColor = "Black"
 function Show-Menu
 {
      param (
@@ -58,7 +58,7 @@ do
           } '4' {
     clear-host
     "--------------DEFAULT GATEWAY---------------"
-    (Get-NetIPConfiguration | Foreach IPv4DefaultGateway)
+    (Get-wmiObject Win32_networkAdapterConfiguration | ?{$_.IPEnabled}).DefaultIPGateway
 
           } '5' {
     clear-host
