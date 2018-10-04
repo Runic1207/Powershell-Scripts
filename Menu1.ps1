@@ -14,7 +14,6 @@ function Show-Menu
      )
      Clear-Host
      Write-Host "================ $Title ================"
-     Write-Host ""
      get-date
      ""
      Write-Host "1:  Press '1' for Hostname." -BackgroundColor $backgroundColor
@@ -54,7 +53,7 @@ do
     "------------DNS SERVER ADDRESSES------------"
   #  (Get-NetIPConfiguration | Get-DnsClientServerAddress)
   #  (Get-NetIPConfiguration | Get-DnsClientServerAddress | format-table -auto)
-  Get-NetIPConfiguration | foreach DNSServer
+    Get-DnsClientServerAddress | ft -auto
 
           } '4' {
     clear-host
