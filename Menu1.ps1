@@ -46,19 +46,19 @@ do
            } '2' {
     clear-host
     "---------------IPV4 ADDRESSES---------------"
-     (Get-NetIPConfiguration).IPv4Address
+     Get-NetIPConfiguration | ft InterfaceAlias, Ipv4Address
 
            } '3' {
     clear-host
     "------------DNS SERVER ADDRESSES------------"
   #  (Get-NetIPConfiguration | Get-DnsClientServerAddress)
   #  (Get-NetIPConfiguration | Get-DnsClientServerAddress | format-table -auto)
-    Get-DnsClientServerAddress | ft -auto
+    Get-DnsClientServerAddress | ft InterfaceAlias, ServerAddresses -auto
 
           } '4' {
     clear-host
     "--------------DEFAULT GATEWAY---------------"
-    (Get-NetIPConfiguration | Foreach IPv4DefaultGateway)
+    Get-NetIPConfiguration | Foreach IPv4DefaultGateway
 
           } '5' {
     clear-host
@@ -78,7 +78,7 @@ do
           } '7' {
     clear-host
     "-------------INSTALLED DRIVERS--------------"
-    (Get-WindowsDriver -online -all)
+    Get-WindowsDriver -online -all
 
           } '8' {
     clear-host
@@ -94,20 +94,20 @@ do
 $Sort = "Id"
     Get-Process | Sort-Object $Sort | Format-Table Id, ProcessName
     $task = Read-Host "Enter PID of Process to Kill"
-    (Stop-Process $task)
+    Stop-Process $task
 
           } '10' {
     clear-host
       "---------------DISPLAY FILE---------------"
       ""
       $file = Read-Host "ENTER PATH OF FILE TO DISPLAY"
-      (Get-Content $file)
+      Get-Content $file
           } '11' {
     clear-host
     "---------FILE SECURITY INFORMATION----------"
     ""
      $security = Read-Host "ENTER PATH OF FILE: "
-    (Get-Acl $security)
+    Get-Acl $security
 
           } '12' {
     clear-host
