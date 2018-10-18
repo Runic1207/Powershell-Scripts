@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-# This script was written by Michael Heeney and ***** ***** for Scripting for Network Administrators for Baker College of Jackson.
+# This script was written by Michael Heeney, Zane Babcock, and ***** for Scripting for Network Administrators for Baker College of Jackson.
 # First build date: 9/14/18
 #--------------------------------------------------------------------------------------------------------------------------------
 
